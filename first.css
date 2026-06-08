@@ -9,12 +9,21 @@ body{
    font-size: medium;
 }*/
 img{
-    border-radius: 1000px;
+    /*border-radius: 1000px;*/
     height:300px;
+        border-color: brown;
+}
+@media (max-width: 600px)
+{
+    img{
+        height:auto;
+        width:100%;
+    }
 }
 video{
-    border-radius: 1000px;
-    height:300px;
+    border-radius: 5000px;
+    height:1000px;
+    width:100%;
     border-color: brown;
 }
 ol{
@@ -38,7 +47,14 @@ button{
 }
 nav{
     display:flex;
+        flex-direction: row;
+        gap:100px;
+}
+@media (min-width:1024px){
+    nav{
+        display:flex;
     flex-direction: column;
+    }
 }
 #p2
 {
@@ -51,10 +67,22 @@ nav{
 .gani{
     font-size: x-large;
 }
-.grid
-{
-    display:grid;
+.grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%; /* 3 columns */
+    gap: 10px;                          /* spacing between items */
+    background-color: lightyellow;
+    padding: 10px;
 }
+
+.grid div {
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
 #one
 {
     grid-row:1/2;

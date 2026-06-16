@@ -1,0 +1,131 @@
+body{
+    color:red;
+    background-color:rgb(255, 192, 251);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/*p{
+   font-style:oblique;
+   font-weight: 500;
+   font-size: medium;
+}*/
+img{
+    /*border-radius: 1000px;*/
+    height:300px;
+        border-color: brown;
+}
+@media (max-width: 600px)
+{
+    img{
+        height:auto;
+        width:100%;
+    }
+}
+video{
+    border-radius: 5000px;
+    height:1000px;
+    width:100%;
+    border-color: brown;
+}
+ol{
+    list-style-type:disc;
+}
+table,th,td{
+    border: blue;
+    border-bottom: 0cqi;
+}
+h1{
+    padding:200px;
+    border:20px solid green;
+      margin-right: 20px;
+}
+button:hover{
+    background-color: blue;
+    border-radius: 20px;
+}
+button{
+     padding: 3px;
+}
+nav{
+    display:flex;
+        flex-direction: row;
+        gap:100px;
+}
+@media (min-width:1024px){
+    nav{
+        display:flex;
+    flex-direction: column;
+    }
+}
+#p2
+{
+    font-style:oblique;
+}
+#p1
+{
+    font-style: italic;
+}
+.gani{
+    font-size: x-large;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%; /* 3 columns */
+    gap: 10px;                          /* spacing between items */
+    background-color: lightyellow;
+    padding: 10px;
+}
+
+.grid div {
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+#one
+{
+    grid-row:1/2;
+}
+#two
+{
+    grid-row:1/2;
+}
+#three
+{
+    grid-row:1/2;
+}
+#four
+{
+    grid-row:2/3;
+}
+#five
+{
+    grid-row:2/3;
+}
+#six
+{
+    grid-row:2/3;
+}
+.festivals
+{
+    display:grid;
+    grid-template-column:50% 50%;
+}
+#festivals1
+{
+    grid-row:1/2;
+}
+#festivals2
+{
+    grid-row:1/2;
+}
+#festivals3
+{
+    grid-row:2/3;
+}
+#festivals4
+{
+    grid-row:2/3;
+}
+

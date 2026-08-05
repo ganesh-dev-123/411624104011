@@ -1,0 +1,31 @@
+.progress-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring-bg {
+  stroke: var(--color-bg-tertiary, #f0f0f0);
+}
+
+.progress-ring-circle {
+  stroke: var(--color-primary, #4F46E5);
+  transition: stroke-dashoffset 1.5s ease;
+}
+
+.progress-ring-text {
+  text-anchor: middle;
+  font-size: 32px;
+  font-weight: 700;
+  fill: var(--color-text-primary);
+}
+
+.progress-ring-label {
+  text-anchor: middle;
+  font-size: 14px;
+  fill: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .progress-ring-bg {
+  stroke: var(--color-bg-tertiary, #2d303a);
+}

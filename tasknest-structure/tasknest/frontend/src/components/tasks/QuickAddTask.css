@@ -1,0 +1,48 @@
+.quick-add-task {
+  width: 100%;
+}
+
+.quick-add-container {
+  background: var(--color-bg-card, #ffffff);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 12px 16px;
+  overflow: hidden;
+  transition: all var(--transition-slow);
+}
+
+.quick-add-input {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.quick-add-field {
+  flex: 1;
+}
+
+.quick-add-field input {
+  border: none;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.quick-add-field input:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.quick-add-btn {
+  min-width: 80px;
+  padding: 8px 16px;
+}
+
+@media (max-width: 480px) {
+  .quick-add-input {
+    flex-direction: column;
+  }
+  
+  .quick-add-btn {
+    width: 100%;
+  }
+}

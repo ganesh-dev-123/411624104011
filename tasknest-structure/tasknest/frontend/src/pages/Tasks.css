@@ -3,6 +3,18 @@
   min-height: 100vh;
 }
 
+/* ── Kids Mode Tasks Page ──────────────────────────────────── */
+.tasks-page-kid {
+  padding: 32px 40px;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+}
+
+.tasks-page-kid .tasks-header h1 {
+  font-size: 32px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 /* Header */
 .tasks-header {
   display: flex;
@@ -23,15 +35,15 @@
   color: var(--color-text-secondary);
 }
 
-.btn-new-task {
+.btn-add {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: var(--color-primary, #4F46E5);
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
   border: none;
-  border-radius: var(--radius-md, 10px);
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -39,10 +51,23 @@
   white-space: nowrap;
 }
 
-.btn-new-task:hover {
-  background: var(--color-primary-dark, #3730A3);
+.btn-add:hover {
+  background: var(--color-primary-dark);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.tasks-page-kid .btn-add {
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  font-weight: 700;
+}
+
+.tasks-page-kid .btn-add:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
 /* Quick Stats */
@@ -93,8 +118,8 @@
   color: var(--color-text-secondary);
 }
 
-/* Toolbar */
-.tasks-toolbar {
+/* Controls */
+.tasks-controls {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -102,28 +127,30 @@
   flex-wrap: wrap;
 }
 
-.search-box {
+.search-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--color-bg-card, #fff);
-  border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: var(--radius-md, 10px);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   padding: 0 14px;
   flex: 1;
   min-width: 200px;
   transition: border-color 0.2s;
 }
 
-.search-box:focus-within {
-  border-color: var(--color-primary, #4F46E5);
+.search-bar:focus-within {
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 .search-icon {
-  color: var(--color-text-tertiary, #9ca3af);
+  color: var(--color-text-tertiary);
   font-size: 14px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
@@ -137,23 +164,24 @@
 }
 
 .search-input::placeholder {
-  color: var(--color-text-tertiary, #9ca3af);
-}
-
-.search-clear {
-  background: none;
-  border: none;
   color: var(--color-text-tertiary);
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  font-size: 12px;
 }
 
-.toolbar-right {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.tasks-page-kid .search-bar {
+  border-radius: 50px;
+  border: 2px solid var(--color-border);
+  padding: 0 18px;
+  background: white;
+}
+
+.tasks-page-kid .search-icon {
+  font-size: 16px;
+}
+
+.tasks-page-kid .search-input {
+  font-size: 15px;
+  padding: 12px 0;
+  font-weight: 500;
 }
 
 .btn-filter {
@@ -161,14 +189,22 @@
   align-items: center;
   gap: 6px;
   padding: 9px 16px;
-  background: var(--color-bg-card, #fff);
-  border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: var(--radius-md, 10px);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   font-size: 14px;
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
+}
+
+.tasks-page-kid .btn-filter {
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid var(--color-border);
 }
 
 .btn-filter:hover,

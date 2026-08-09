@@ -15,6 +15,7 @@ class ActivityService:
         action: str,
         description: str,
         extra_data: Optional[str] = None,
+        commit: bool = True,
     ) -> None:
         activity = ActivityLog(
             user_id=user_id,
@@ -26,7 +27,8 @@ class ActivityService:
             created_at=datetime.now(timezone.utc),
         )
         self.db.add(activity)
-        await self.db.commit()
+        if commit:
+            await self.db.commit()
 
     async def get_recent_activities(
         self, user_id: int, limit: int = 20

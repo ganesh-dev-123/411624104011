@@ -2,7 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '../components/layout/Layout';
 import { useTasks } from '../context/TaskContext';
-import { FaChevronLeft, FaChevronRight, FaCircle, FaTimes } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
+import ModeIcon from '../components/common/ModeIcon';
+import ModeText from '../components/common/ModeText';
+import { FaCircle, FaTimes } from 'react-icons/fa';
 import './Calendar.css';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -11,33 +14,19 @@ const MONTHS = [
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
-const PRIORITY_COLORS = {
-  CRITICAL: '#ef4444',
-  HIGH: '#f59e0b',
-  MEDIUM: '#3b82f6',
-  LOW: '#10b981',
-};
-
-const STATUS_COLORS = {
-  COMPLETED: '#10b981',
-  IN_PROGRESS: '#3b82f6',
-  PENDING: '#f59e0b',
-  CANCELLED: '#6b7280',
-  ARCHIVED: '#9ca3af',
-};
-
 const TaskPill = ({ task }) => (
   <div
     className="cal-task-pill"
-    style={{ borderLeftColor: PRIORITY_COLORS[task.priority] || '#3b82f6' }}
+    style={{ borderLeftColor: `var(--priority-${task.priority?.toLowerCase() || 'medium'})` }}
     title={task.title}
   >
-    <span className="pill-dot" style={{ background: STATUS_COLORS[task.status] || '#f59e0b' }} />
+    <span className="pill-dot" style={{ background: `var(--priority-${task.priority?.toLowerCase() || 'medium'})` }} />
     <span className="pill-text">{task.emoji || ''} {task.title}</span>
   </div>
 );
 
 const DayDetail = ({ date, tasks, onClose }) => {
+  const { isKid } = useTheme();
   const dateLabel = date.toLocaleDateString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
@@ -55,24 +44,24 @@ const DayDetail = ({ date, tasks, onClose }) => {
           <h3 className="day-detail-title">{dateLabel}</h3>
           <p className="day-detail-sub">{tasks.length} task{tasks.length !== 1 ? 's' : ''}</p>
         </div>
-        <button className="day-detail-close" onClick={onClose}><FaTimes /></button>
+        <button className="day-detail-close" onClick={onClose}><ModeIcon name="close" /></button>
       </div>
 
       <div className="day-detail-list">
         {tasks.length === 0 ? (
           <div className="day-empty">
-            <span>🗓️</span>
-            <p>No tasks due this day.</p>
+            <ModeIcon name="calendar" />
+            <p><ModeText name="empty-calendar" /></p>
           </div>
         ) : (
           tasks.map(task => (
             <div key={task.id} className="day-task-card">
               <div className="day-task-top">
-                <span className="day-task-emoji">{task.emoji || '📋'}</span>
+                <span className="day-task-emoji">{task.emoji || <ModeIcon name="brand" />}</span>
                 <span className="day-task-title">{task.title}</span>
                 <span
                   className="day-task-status"
-                  style={{ color: STATUS_COLORS[task.status] || '#f59e0b' }}
+                  style={{ color: `var(--priority-${task.priority?.toLowerCase() || 'medium'})` }}
                 >
                   {task.status?.replace('_', ' ')}
                 </span>
@@ -83,12 +72,12 @@ const DayDetail = ({ date, tasks, onClose }) => {
               <div className="day-task-meta">
                 <span
                   className="day-task-priority"
-                  style={{ color: PRIORITY_COLORS[task.priority] || '#3b82f6' }}
+                  style={{ color: `var(--priority-${task.priority?.toLowerCase() || 'medium'})` }}
                 >
                   <FaCircle style={{ fontSize: 7 }} /> {task.priority}
                 </span>
                 {task.due_time && (
-                  <span className="day-task-time">🕐 {task.due_time}</span>
+                  <span className="day-task-time"><ModeIcon name="calendar" /> {task.due_time}</span>
                 )}
               </div>
             </div>
@@ -101,6 +90,7 @@ const DayDetail = ({ date, tasks, onClose }) => {
 
 const Calendar = () => {
   const { tasks } = useTasks();
+  const { isKid } = useTheme();
   const today = new Date();
   const [viewDate, setViewDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDay, setSelectedDay] = useState(null);
@@ -158,7 +148,7 @@ const Calendar = () => {
 
   return (
     <Layout>
-      <div className="calendar-page">
+      <div className={`calendar-page ${isKid ? 'calendar-page-kid' : ''}`}>
         {/* Header */}
         <motion.div
           className="cal-header"
@@ -167,14 +157,14 @@ const Calendar = () => {
           transition={{ duration: 0.4 }}
         >
           <div>
-            <h1>Calendar</h1>
-            <p className="cal-subtitle">View tasks by due date</p>
+            <h1><ModeText name="nav-calendar" /></h1>
+            <p className="cal-subtitle">{isKid ? 'See when your tasks are due!' : 'View tasks by due date'}</p>
           </div>
           <div className="cal-nav">
-            <button className="btn-today" onClick={goToday}>Today</button>
-            <button className="cal-nav-btn" onClick={prevMonth}><FaChevronLeft /></button>
+            <button className="btn-today" onClick={goToday}>{isKid ? 'Today!' : 'Today'}</button>
+            <button className="cal-nav-btn" onClick={prevMonth}><ModeIcon name="prev" /></button>
             <span className="cal-month-label">{MONTHS[month]} {year}</span>
-            <button className="cal-nav-btn" onClick={nextMonth}><FaChevronRight /></button>
+            <button className="cal-nav-btn" onClick={nextMonth}><ModeIcon name="next" /></button>
           </div>
         </motion.div>
 
@@ -261,7 +251,7 @@ const Calendar = () => {
                   <span className="unsched-name">{task.title}</span>
                   <span
                     className="unsched-priority"
-                    style={{ color: PRIORITY_COLORS[task.priority] || '#3b82f6' }}
+                    style={{ color: `var(--priority-${task.priority?.toLowerCase() || 'medium'})` }}
                   >
                     {task.priority}
                   </span>

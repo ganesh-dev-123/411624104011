@@ -1,31 +1,67 @@
-.progress-ring {
+/* Wrapper — critical: prevents the SVG from overflowing into siblings */
+.progress-ring-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Hard cap so it never grows huge on large screens */
+  max-width: 200px;
+  /* Ensure 1:1 aspect so the circle is never squashed or stretched */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
-.progress-ring-bg {
-  stroke: var(--color-bg-tertiary, #f0f0f0);
+/* SVG fills its square wrapper exactly */
+.progress-ring-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible; /* lets the stroke cap show at 0 / 100% */
 }
 
-.progress-ring-circle {
-  stroke: var(--color-primary, #4F46E5);
-  transition: stroke-dashoffset 1.5s ease;
+/* Track (grey background ring) */
+.progress-ring-track {
+  stroke: var(--color-bg-tertiary, #e5e7eb);
 }
 
-.progress-ring-text {
-  text-anchor: middle;
+/* Fill (coloured progress arc) */
+.progress-ring-fill {
+  stroke: var(--color-primary, #4f46e5);
+}
+
+/* Percentage number */
+.progress-ring-pct {
   font-size: 32px;
   font-weight: 700;
-  fill: var(--color-text-primary);
+  fill: var(--color-text-primary, #111827);
+  font-family: inherit;
 }
 
+/* Label text below the number */
 .progress-ring-label {
-  text-anchor: middle;
   font-size: 14px;
-  fill: var(--color-text-secondary);
+  font-weight: 500;
+  fill: var(--color-text-secondary, #6b7280);
+  font-family: inherit;
 }
 
-[data-theme="dark"] .progress-ring-bg {
+/* Dark theme */
+[data-theme='dark'] .progress-ring-track {
   stroke: var(--color-bg-tertiary, #2d303a);
+}
+
+[data-theme='dark'] .progress-ring-pct {
+  fill: var(--color-text-primary, #f9fafb);
+}
+
+[data-theme='dark'] .progress-ring-label {
+  fill: var(--color-text-secondary, #9ca3af);
+}
+
+/* Responsive: never shrink below 120px */
+@media (max-width: 480px) {
+  .progress-ring-wrapper {
+    max-width: 160px;
+  }
 }

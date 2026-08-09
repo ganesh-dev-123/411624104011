@@ -27,7 +27,11 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-mode', mode);
+    if (mode === 'kid') {
+      document.documentElement.setAttribute('data-mode', 'kid');
+    } else {
+      document.documentElement.setAttribute('data-mode', 'professional');
+    }
     localStorage.setItem('mode', mode);
   }, [mode]);
 

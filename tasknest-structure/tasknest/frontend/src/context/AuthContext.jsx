@@ -57,10 +57,14 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
+      console.log('Register attempt with data:', userData);
       const response = await apiRegister(userData);
+      console.log('Register response:', response);
       toast.success('Account created successfully! Please login.');
       return { success: true, data: response };
     } catch (error) {
+      console.error('Registration error:', error);
+      console.error('Error response:', error.response);
       const message = error.response?.data?.detail || 'Registration failed. Please try again.';
       toast.error(message);
       return { success: false, error: message };

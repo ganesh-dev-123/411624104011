@@ -99,8 +99,10 @@ class CategoryService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="CREATE_CATEGORY",
-            description=f"Created category: {new_category.name}"
+            description=f"Created category: {new_category.name}",
+            commit=False,
         )
+        await self.db.commit()
         
         return new_category
 
@@ -124,8 +126,10 @@ class CategoryService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="UPDATE_CATEGORY",
-            description=f"Updated category: {category.name}"
+            description=f"Updated category: {category.name}",
+            commit=False,
         )
+        await self.db.commit()
         
         return category
 
@@ -141,7 +145,9 @@ class CategoryService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="DELETE_CATEGORY",
-            description=f"Deleted category: {category.name}"
+            description=f"Deleted category: {category.name}",
+            commit=False,
         )
+        await self.db.commit()
         
         return True

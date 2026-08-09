@@ -11,11 +11,45 @@
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
+/* ── Kids Mode Auth ──────────────────────────────────── */
+.auth-container.auth-kid {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+}
+
+.auth-container.auth-kid.auth-dark {
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
+}
+
+.auth-kid .auth-card {
+  border-radius: 32px;
+  padding: 56px;
+  border: 3px solid var(--color-border);
+  background: linear-gradient(135deg, #ffffff 0%, #fef9e7 100%);
+}
+
+.auth-kid.auth-dark .auth-card {
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+}
+
+.auth-kid .auth-header h1 {
+  font-size: 36px;
+  color: var(--color-primary);
+}
+
+.auth-kid .auth-features span {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+}
+
 .auth-card {
-  background: var(--color-bg-card, #ffffff);
+  background: var(--color-bg-card);
   padding: 48px;
   border-radius: 24px;
-  box-shadow: var(--shadow-xl, 0 20px 60px rgba(0, 0, 0, 0.3));
+  box-shadow: var(--shadow-xl);
   width: 100%;
   max-width: 420px;
   backdrop-filter: blur(10px);
@@ -29,12 +63,12 @@
 .auth-header h1 {
   font-size: 32px;
   font-weight: 700;
-  color: var(--color-text-primary, #1a1a2e);
+  color: var(--color-text-primary);
   margin-bottom: 8px;
 }
 
 .auth-header p {
-  color: var(--color-text-secondary, #666);
+  color: var(--color-text-secondary);
   font-size: 16px;
 }
 
@@ -59,23 +93,23 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: var(--color-text-secondary, #999);
+  color: var(--color-text-secondary);
   cursor: pointer;
   padding: 4px;
 }
 
 .password-toggle:hover {
-  color: var(--color-text-primary, #333);
+  color: var(--color-text-primary);
 }
 
 .auth-footer {
   text-align: center;
   margin-top: 24px;
-  color: var(--color-text-secondary, #666);
+  color: var(--color-text-secondary);
 }
 
 .auth-footer a {
-  color: var(--color-primary, #667eea);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
 }
@@ -94,8 +128,8 @@
 
 .auth-features span {
   font-size: 13px;
-  color: var(--color-text-secondary, #888);
-  background: var(--color-bg-secondary, #f5f5f5);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
   padding: 4px 12px;
   border-radius: 20px;
 }
@@ -112,5 +146,13 @@
   
   .auth-header h1 {
     font-size: 26px;
+  }
+  
+  .auth-kid .auth-card {
+    padding: 40px 32px;
+  }
+  
+  .auth-kid .auth-header h1 {
+    font-size: 28px;
   }
 }

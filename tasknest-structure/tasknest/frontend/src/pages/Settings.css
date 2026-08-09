@@ -3,6 +3,35 @@
   min-height: 100vh;
 }
 
+/* ── Kids Mode Settings Page ──────────────────────────────────── */
+.settings-page-kid {
+  padding: 32px 40px;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+}
+
+.settings-page-kid .settings-header h1 {
+  font-size: 32px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.settings-page-kid .settings-sidebar {
+  border-radius: var(--radius-2xl);
+  border: 2px solid var(--color-border);
+}
+
+.settings-page-kid .settings-nav-item {
+  border-radius: 50px;
+  padding: 14px 20px;
+  font-weight: 600;
+}
+
+.settings-page-kid .settings-section {
+  border-radius: var(--radius-2xl);
+  border: 2px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-secondary) 100%);
+}
+
 .settings-header {
   margin-bottom: 28px;
 }
@@ -521,4 +550,11 @@
   .theme-options {
     flex-direction: column;
   }
+}
+
+/* inline validation error */
+.field-error {
+  font-size: 12px;
+  color: #ef4444;
+  margin: -8px 0 0;
 }

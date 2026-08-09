@@ -118,8 +118,10 @@ class TaskService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="CREATE_TASK",
-            description=f"Created task: {new_task.title}"
+            description=f"Created task: {new_task.title}",
+            commit=False,
         )
+        await self.db.commit()
         
         return new_task
 
@@ -164,8 +166,10 @@ class TaskService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="UPDATE_TASK",
-            description=f"Updated task: {task.title}"
+            description=f"Updated task: {task.title}",
+            commit=False,
         )
+        await self.db.commit()
         
         return task
 
@@ -185,8 +189,10 @@ class TaskService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="DELETE_TASK",
-            description=f"Deleted task: {task_title}"
+            description=f"Deleted task: {task_title}",
+            commit=False,
         )
+        await self.db.commit()
         
         return True
 
@@ -234,8 +240,10 @@ class TaskService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="DUPLICATE_TASK",
-            description=f"Duplicated task: {original_task.title}"
+            description=f"Duplicated task: {original_task.title}",
+            commit=False,
         )
+        await self.db.commit()
         
         return new_task
 
@@ -255,8 +263,10 @@ class TaskService:
         await self.activity_service.log_activity(
             user_id=user_id,
             action="ARCHIVE_TASK",
-            description=f"Archived task: {task.title}"
+            description=f"Archived task: {task.title}",
+            commit=False,
         )
+        await self.db.commit()
         
         return task
 
